@@ -1,0 +1,18 @@
+<div>
+	<h4>Actors</h4>
+	<button *ngIf="!showDetails" (click)="showHide(true)" class="btn btn-info" >Show Details</button>
+	<button *ngIf="showDetails" (click)="showHide(false)" class="btn btn-info" >Hide Details</button>
+
+	<div *ngFor="let actor of actors; index as i" class="bg-dark text-light p-3 rounded mb-2">
+		<a>{{(i+1) + '. ' + actor.name}}</a>
+		<div *ngIf="showDetails">
+			<div>Flop: {{actor.movieTitle}}</div>
+			<div>DOB: {{actor.born}}</div>
+			<div>Appearances: {{actor.credits}}</div>
+
+		</div>
+		<span>&nbsp;</span>
+		<a [routerLink]="['/actors', actor.id, 'edit']" style="float:right">Edit</a>
+	</div>
+
+</div>
